@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using TestApi.Commands;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using TestApi.Models;
+using System.Windows.Input;
 
 namespace TestApi.ViewModels
 {
@@ -17,6 +14,10 @@ namespace TestApi.ViewModels
         public ObservableCollection<EnTeteDocument> Documents { get; set; }
 
         public ObservableCollection<LignesDocument> Lignes { get; set; }
+
+        public ICommand AjouterCommand { get; set; }
+        public ICommand SupprimerCommand { get; set; }
+
 
         public EnTeteDocument SelectedDocument
         {
@@ -39,6 +40,8 @@ namespace TestApi.ViewModels
                  new EnTeteDocument(2, "Facture", "00002",  DateTime.Parse("17/10/2025"), DateTime.Parse("17/11/2025"), 4025.2, 355.3, 4800.5, 0, "test2", 0, "Payée/Validé"),
                  new EnTeteDocument(3, "Facture", "00003",  DateTime.Parse("05/12/2026"), DateTime.Parse("25/01/2026"), 652.5, 60.3, 712.8, 325.1,"test3", 0, "En cours")
             };
+            AjouterCommand = new RelayCommand(AjouterDocument);
+            SupprimerCommand = new RelayCommand(SupprimerDocument);
         }
         public void ChargerLignes()
         {
@@ -62,10 +65,21 @@ namespace TestApi.ViewModels
                 }
             }
         }
-       
 
-        
-        
+     
+        private void AjouterDocument(object parameter)
+        {
+            var newDocument = new EnTeteDocument("00004");
+            Documents.Add(newDocument);
+            _selectedDocument = newDocument;
+        }
+
+        private void SupprimerDocument(object parameter)
+        {
+            Documents.Remove(_selectedDocument);
+            _selectedDocument = null;
+
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string name = null)

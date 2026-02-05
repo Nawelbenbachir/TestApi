@@ -44,6 +44,10 @@ namespace TestApi.Models
             Statut = statut; 
             
         }
+        public EnTeteDocument(string numero)
+        {
+            Numero = numero;
+        }
 
 
 
