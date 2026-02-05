@@ -32,6 +32,7 @@ namespace TestApi.ViewModels
         
         public DocumentViewModelNoDB()
         {
+            Lignes = new ObservableCollection<LignesDocument>();
             Documents = new ObservableCollection<EnTeteDocument>
             {
                  new EnTeteDocument(1, "Facture", "00001",  DateTime.Parse("05/01/2026"), DateTime.Parse("05/02/2026"), 1563.2, 125.3, 1688.5, 1688.5, "test1", 0, "En cours"),
@@ -39,10 +40,29 @@ namespace TestApi.ViewModels
                  new EnTeteDocument(3, "Facture", "00003",  DateTime.Parse("05/12/2026"), DateTime.Parse("25/01/2026"), 652.5, 60.3, 712.8, 325.1,"test3", 0, "En cours")
             };
         }
-        public <List>Lignes ChargerLignes()
+        public void ChargerLignes()
         {
-
+            //On vide les lignes du document sélectionné 
+            Lignes.Clear();
+            var LignesDocuments= new List<LignesDocument>
+            {
+                new LignesDocument(1,1, "Description 1", "P001", 2, 100, 20, 200, 40, 240),
+                new LignesDocument(2,1,"Test", "P005", 2, 100, 20, 200, 40, 240),
+                new LignesDocument(3,2, "Description 2", "P002", 1, 300, 20, 300, 60, 360),
+                new LignesDocument(4,2, "Description 3", "P003", 5, 50, 20, 250, 50, 300),
+                new LignesDocument(5,3, "Description 4", "P004", 3, 150, 20, 450, 90, 540),
+                new LignesDocument(6,3, "Test", "P006", 3, 150, 20, 450, 90, 540)
+            };
+            //On ajoute les lignes correspondantes au document sélectionné
+            foreach (var ligne in LignesDocuments)
+            {
+                if (ligne.IdDocument == _selectedDocument.Id)
+                {
+                    Lignes.Add(ligne);
+                }
+            }
         }
+       
 
         
         

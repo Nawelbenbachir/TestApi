@@ -8,6 +8,7 @@ namespace TestApi.Models
 {
     internal class LignesDocument
     {
+        public int Id { get; set; }
         public int IdDocument { get; set; }
         public string Description { get; set; }
 
@@ -19,9 +20,10 @@ namespace TestApi.Models
         public Double TotalTva { get; set; }
         public Double TotalTtc { get; set; }
 
-        public LignesDocument(int idDocument, string description, string codeProduit, double quantite, double prixUnitaire, double tauxTva, double totalHt,
+        public LignesDocument( int id,int idDocument, string description, string codeProduit, double quantite, double prixUnitaire, double tauxTva, double totalHt,
             double totalTva, double totalTtc)
         {
+            Id= id;
             IdDocument = idDocument;
             Description = description;
             CodeProduit = codeProduit;
