@@ -10,5 +10,6 @@ namespace TestApi.Models
     {
         public int Id;
         public string Nom;
+        public Societe() { }
     }
 }
