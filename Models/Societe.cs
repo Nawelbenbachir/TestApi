@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TestApi.Models
 {
-    internal class Societe
+    public class Societe
     {
-        public int Id;
-        public string Nom;
+        public int id { get; set; }
+        public string nom { get; set; }
         public Societe() { }
     }
 }

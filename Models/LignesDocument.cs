@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApi.Models
 {
-    internal class LignesDocument
+    public class LignesDocument
     {
         public int Id { get; set; }
         public int IdDocument { get; set; }
@@ -23,16 +23,16 @@ namespace TestApi.Models
         public LignesDocument( int id,int idDocument, string description, string codeProduit, double quantite, double prixUnitaire, double tauxTva, double totalHt,
             double totalTva, double totalTtc)
         {
-            Id= id;
-            IdDocument = idDocument;
-            Description = description;
-            CodeProduit = codeProduit;
-            Quantite = quantite;
-            PrixUnitaire = prixUnitaire;
-            TauxTva = tauxTva;
-            TotalHt = totalHt;
-            TotalTva = totalTva;
-            TotalTtc = totalTtc;
+            this.Id = id;
+            this.IdDocument = idDocument;
+            this.Description = description;
+            this.CodeProduit = codeProduit;
+            this.Quantite = quantite;
+            this.PrixUnitaire = prixUnitaire;
+            this.TauxTva = tauxTva;
+            this.TotalHt = totalHt;
+            this.TotalTva = totalTva;
+            this.TotalTtc = totalTtc;
         }
 
     }

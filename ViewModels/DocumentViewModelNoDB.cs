@@ -50,8 +50,8 @@ namespace TestApi.ViewModels
                     total_ttc = 1688.5,
                     solde = 1688.5,
                     commentaire = "test1",
-                    Client = null,
-                    Societe = null,
+                    client = null,
+                    societe = null,
                     statut = "En cours"
                 },
                 new EnTeteDocument
@@ -66,8 +66,8 @@ namespace TestApi.ViewModels
                     total_ttc = 4800.5,
                     solde = 0,
                     commentaire = "test2",
-                    Client = null,
-                    Societe = null,
+                    client = null,
+                    societe = null,
                     statut = "Payée/Validé"
                 },
                 new EnTeteDocument
@@ -82,8 +82,8 @@ namespace TestApi.ViewModels
                     total_ttc = 712.8,
                     solde = 325.1,
                     commentaire = "test3",
-                    Client = null,
-                    Societe = null,
+                    client = null,
+                    societe = null,
                     statut = "En cours"
                 }
             };

@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Media.Animation;
 
 namespace TestApi.Models
 {
-    internal class EnTeteDocument
+    public class EnTeteDocument
     {
         public int id { get; set; }
         public string type{ get; set; }
+        [JsonPropertyName("numero")]
         public string code_document { get; set; }
         public DateTime date { get; set; }
         public DateTime? date_echeance { get; set; }
@@ -23,8 +25,8 @@ namespace TestApi.Models
         public Double solde { get; set; }
         public string commentaire { get; set; }
 
-        public Client Client { get; set; }
-        public Societe Societe { get; set; }
+        public Client client { get; set; }
+        public Societe societe { get; set; }
         public string statut { get; set; }
         
 
@@ -32,32 +34,28 @@ namespace TestApi.Models
              double totaltva, double totalttc, double totalht, double solde, 
             string commentaire,Client client, Societe societe, string statut)
         {
-            id = id; 
-            type = type; 
-            code_document = numero;
-            date = date; 
-            date_echeance = dateecheancevalidite;
-            date_validite = dateecheancevalidite;
-            total_tva = totaltva; 
-            total_ttc = totalttc; 
-            total_ht = totalht; 
-            solde = solde; 
-            commentaire = commentaire;
-            Client = client;
-            Societe = societe;
-            statut = statut; 
+            this.id = id;
+            this.type = type;
+            this.code_document = numero;
+            this.date = date;
+            this.date_echeance = dateecheancevalidite;
+            this.date_validite = dateecheancevalidite;
+            this.total_tva = totaltva;
+            this.total_ttc = totalttc;
+            this.total_ht = totalht;
+            this.solde = solde;
+            this.commentaire = commentaire;
+            this.client = client;
+            this.societe = societe;
+            this.statut = statut; 
             
         }
         public EnTeteDocument(string numero)
         {
             code_document = numero;
         }
-        public EnTeteDocument() { }
-
-
-
-
-
-
+        public EnTeteDocument() 
+        {
+        }
     }
 }

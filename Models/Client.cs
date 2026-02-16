@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace TestApi.Models
 {
-    internal class Client
+    public class Client
     {
-        public int Id;
-        public string Nom;
+        public int id { get; set; }
+        public string nom { get; set; }
 
         public Client()
         {
 
         }
+        public Client(int id, string nom)
+        {
+            this.id = id;
+            this.nom = nom;
+        }
     }
+
+
 }
