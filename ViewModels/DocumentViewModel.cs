@@ -1,25 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.ComponentModel;
-using TestApi.Services;
-using TestApi.Models;
-using System.Collections.ObjectModel;
-using System.Reflection.Metadata;
 using System.Windows.Input;
 using TestApi.Commands;
+using TestApi.Models;
+using TestApi.Services;
 
 namespace TestApi.ViewModels
 {
-    internal class DocumentViewModel
+    internal class DocumentViewModel : INotifyPropertyChanged
     {
         private readonly DocumentService _documentService = new DocumentService();
         //Porpriété exposée à la vue
-        public ObservableCollection<Document> Documents { get; set; } = new ObservableCollection<Document>();
-        public Document? SelectedDocument { get; set; }
+
+        private EnTeteDocument _selectedDocument;
+        public EnTeteDocument? SelectedDocument
+        {
+            get => _selectedDocument;
+            set
+            {
+                _selectedDocument = value;
+                OnPropertyChanged(nameof(SelectedDocument));
+            }
+        }
+        public ObservableCollection<EnTeteDocument> Documents { get; set; } = new ObservableCollection<EnTeteDocument>();
+        
         public ICommand LoadCommand { get; }
         public ICommand AddCommand { get; }
         public DocumentViewModel()
@@ -42,8 +54,12 @@ namespace TestApi.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors du chargement des artistes : {ex.Message}");
+                MessageBox.Show($"Erreur lors du chargement des documents : {ex.Message}");
             }
         }
+       
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        
     }
 }

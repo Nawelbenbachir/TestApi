@@ -9,45 +9,50 @@ namespace TestApi.Models
 {
     internal class EnTeteDocument
     {
-        public int Id { get; set; }
-        public string Type { get; set; }
-        public string Numero { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime DateEcheanceValidite { get; set; }
+        public int id { get; set; }
+        public string type{ get; set; }
+        public string code_document { get; set; }
+        public DateTime date { get; set; }
+        public DateTime? date_echeance { get; set; }
+        public DateTime? date_validite { get; set; }
        
-        public Double TotalTva { get; set; }
-        public Double TotalTtc { get; set; }
-        public Double TotalHt { get; set; }
+        public Double total_tva { get; set; }
+        public Double total_ttc { get; set; }
+        public Double total_ht { get; set; }
 
-        public Double Solde { get; set; }
-        public string Commentaire { get; set; }
+        public Double solde { get; set; }
+        public string commentaire { get; set; }
 
-        public int IdClient { get; set; }
-        public string Statut { get; set; }
+        public Client Client { get; set; }
+        public Societe Societe { get; set; }
+        public string statut { get; set; }
         
 
         public EnTeteDocument(int id, string type, string numero, DateTime date, DateTime dateecheancevalidite, 
              double totaltva, double totalttc, double totalht, double solde, 
-            string commentaire,int idclient, string statut)
+            string commentaire,Client client, Societe societe, string statut)
         {
-            Id = id; 
-            Type = type; 
-            Numero = numero;
-            Date = date; 
-            DateEcheanceValidite = dateecheancevalidite; 
-            TotalTva = totaltva; 
-            TotalTtc = totalttc; 
-            TotalHt = totalht; 
-            Solde = solde; 
-            Commentaire = commentaire; 
-            IdClient = idclient; 
-            Statut = statut; 
+            id = id; 
+            type = type; 
+            code_document = numero;
+            date = date; 
+            date_echeance = dateecheancevalidite;
+            date_validite = dateecheancevalidite;
+            total_tva = totaltva; 
+            total_ttc = totalttc; 
+            total_ht = totalht; 
+            solde = solde; 
+            commentaire = commentaire;
+            Client = client;
+            Societe = societe;
+            statut = statut; 
             
         }
         public EnTeteDocument(string numero)
         {
-            Numero = numero;
+            code_document = numero;
         }
+        public EnTeteDocument() { }
 
 
 

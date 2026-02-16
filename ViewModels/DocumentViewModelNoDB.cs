@@ -31,14 +31,61 @@ namespace TestApi.ViewModels
             }
         }
         
+
+
         public DocumentViewModelNoDB()
         {
             Lignes = new ObservableCollection<LignesDocument>();
             Documents = new ObservableCollection<EnTeteDocument>
             {
-                 new EnTeteDocument(1, "Facture", "00001",  DateTime.Parse("05/01/2026"), DateTime.Parse("05/02/2026"), 1563.2, 125.3, 1688.5, 1688.5, "test1", 0, "En cours"),
-                 new EnTeteDocument(2, "Facture", "00002",  DateTime.Parse("17/10/2025"), DateTime.Parse("17/11/2025"), 4025.2, 355.3, 4800.5, 0, "test2", 0, "Payée/Validé"),
-                 new EnTeteDocument(3, "Facture", "00003",  DateTime.Parse("05/12/2026"), DateTime.Parse("25/01/2026"), 652.5, 60.3, 712.8, 325.1,"test3", 0, "En cours")
+                new EnTeteDocument
+                {
+                    id = 1,
+                    type = "Facture",
+                    code_document = "00001",
+                    date = DateTime.Parse("05/01/2026"),
+                    date_echeance = DateTime.Parse("05/02/2026"),
+                    total_ht = 1563.2,
+                    total_tva = 125.3,
+                    total_ttc = 1688.5,
+                    solde = 1688.5,
+                    commentaire = "test1",
+                    Client = null,
+                    Societe = null,
+                    statut = "En cours"
+                },
+                new EnTeteDocument
+                {
+                    id = 2,
+                    type = "Facture",
+                    code_document = "00002",
+                    date = DateTime.Parse("17/10/2025"),
+                    date_echeance = DateTime.Parse("17/11/2025"),
+                    total_ht = 4025.2,
+                    total_tva = 355.3,
+                    total_ttc = 4800.5,
+                    solde = 0,
+                    commentaire = "test2",
+                    Client = null,
+                    Societe = null,
+                    statut = "Payée/Validé"
+                },
+                new EnTeteDocument
+                {
+                    id = 3,
+                    type = "Facture",
+                    code_document = "00003",
+                    date = DateTime.Parse("05/12/2026"),
+                    date_echeance = DateTime.Parse("25/01/2026"),
+                    total_ht = 652.5,
+                    total_tva = 60.3,
+                    total_ttc = 712.8,
+                    solde = 325.1,
+                    commentaire = "test3",
+                    Client = null,
+                    Societe = null,
+                    statut = "En cours"
+                }
             };
             AjouterCommand = new RelayCommand(AjouterDocument);
             SupprimerCommand = new RelayCommand(SupprimerDocument);
@@ -59,7 +106,7 @@ namespace TestApi.ViewModels
             //On ajoute les lignes correspondantes au document sélectionné
             foreach (var ligne in LignesDocuments)
             {
-                if (ligne.IdDocument == _selectedDocument.Id)
+                if (ligne.IdDocument == _selectedDocument.id)
                 {
                     Lignes.Add(ligne);
                 }
